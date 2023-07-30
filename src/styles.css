@@ -1,0 +1,8 @@
+.main-title {
+    display: flex;
+    justify-content: center;
+}
+body{
+    font-family: 'Inter', sans-serif;
+    font-family: 'Rubik', sans-serif;
+}
