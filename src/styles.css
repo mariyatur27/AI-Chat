@@ -3,6 +3,28 @@
     justify-content: center;
 }
 body{
-    font-family: 'Inter', sans-serif;
-    font-family: 'Rubik', sans-serif;
+    font-family: 'Tajawal', sans-serif;
+    margin: 0;
+}
+.composer-container {
+    flex: 0 0 25%;
+    background-size: cover;
+    padding-top: 20%;
+    background-position: center;
+    filter: grayscale(1);
+    cursor: pointer;
+    animation-duration: 1s;
+}
+/* .composer-container:hover{
+    filter: grayscale(0);
+} */
+section#library-section {
+    display: flex;
+    flex-wrap: wrap;
+}
+.composer-container h2{
+    color: white;
+    margin-left: 8%;
+    font-weight: 100;
+    background: black;
 }

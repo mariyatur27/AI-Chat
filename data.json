@@ -1,0 +1,27 @@
+{
+    "Wolfgang Amadeus Mozart": [
+        "Wolfgang Amadeus Mozart",
+        "https://en.wikipedia.org/wiki/Wolfgang_Amadeus_Mozart",
+        "https://assets.classicfm.com/2012/31/mozart-1343837321-editorial-short-form-1.jpg"
+    ],
+    "Claude Debussy": [
+        "Claude Debussy",
+        "https://en.wikipedia.org/wiki/Claude_Debussy",
+        "https://upload.wikimedia.org/wikipedia/en/b/b4/Claude_Debussy_atelier_Nadar.jpg"
+    ],
+    "Frédéric Chopin": [
+        "Frédéric Chopin",
+        "https://en.wikipedia.org/wiki/Fr%C3%A9d%C3%A9ric_Chopin",
+        "https://hips.hearstapps.com/hmg-prod/images/frederic-francois-chopin-two-to-three-years-before-his-death-in-1849-photo-by-time-life-picturesmansellthe-life-picture-collection-via-getty-images.jpg"
+    ],
+    "Ludwig van Beethoven": [
+        "Ludwig van Beethoven",
+        "https://en.wikipedia.org/wiki/Ludwig_van_Beethoven",
+        "https://miro.medium.com/v2/resize:fit:2000/1*zwAZFKGEOn6muluaKsCTsQ.jpeg"
+    ],
+    "Sergei Rachmaninoff": [
+        "Sergei Rachmaninoff",
+        "https://en.wikipedia.org/wiki/Sergei_Rachmaninoff",
+        "https://assets.classicfm.com/2013/35/sergei-rachmaninov-1378202885-view-0.jpg"
+    ]
+}
