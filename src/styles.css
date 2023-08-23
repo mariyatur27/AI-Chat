@@ -3,28 +3,19 @@
     justify-content: center;
 }
 body{
-    font-family: 'Tajawal', sans-serif;
+    font-family: 'Source Code Pro', monospace;
     margin: 0;
 }
-.composer-container {
-    flex: 0 0 25%;
-    background-size: cover;
-    padding-top: 20%;
-    background-position: center;
-    filter: grayscale(1);
-    cursor: pointer;
-    animation-duration: 1s;
-}
-/* .composer-container:hover{
-    filter: grayscale(0);
-} */
-section#library-section {
-    display: flex;
-    flex-wrap: wrap;
-}
-.composer-container h2{
-    color: white;
-    margin-left: 8%;
-    font-weight: 100;
-    background: black;
+.container{
+    display: grid;
+    place-items: left;
+    width: fit-content;
+    padding: 10%;
+  }
+  
+.text-field{
+    width: 800px;
+    height: 57px;
+    font-size: x-large;
+    padding: 3%;
 }
