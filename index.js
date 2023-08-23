@@ -47,47 +47,44 @@ app.get('/data', (req, res) => {
     })
 })
 
-app.post("/data", (req, res) => {
 
-    fs.readFile("data.json", "utf8", (err, jsonString) => {
-        if (err){
-            console.log("File read failed:", err);
-            return;
-        }
+fs.readFile("data.json", "utf8", (err, jsonString) => {
+    if (err){
+        console.log("File read failed:", err);
+        return;
+    }
 
-        var name = req.body.name
+    try {
 
-        try{
+        const data = JSON.parse(jsonString);
+        var names = Object.keys(data);
 
-            const data = JSON.parse(jsonString);
-            // var name = req.body.name
-            var website = Object.values(data[req.body.name])[1]
-
+        names.forEach(name => {
             var prompts = [
                 "Write " + name + "\'s date of birth and death.",
-                "Write a list of " + name + "\'s most famous works. Format it as a list.",
-                "Write a small summary of " + name + "\'s musical style.",
-                "Make a list of" + name + "' biggest contributions to music. Format it as a list."
+                // "Write a list of " + name + "\'s most famous works. Format it as a list.",
+                // "Write a small summary of " + name + "\'s musical style.",
+                // "Make a list of" + name + "' biggest contributions to music. Format it as a list."
             ]
 
-            // var answer_matrix = {};
-            var answer_matrix = [];
+            var answer_matrix = {}
 
-            prompts.forEach(n => {
+            prompts.forEach(prompt => {
                 
                 (async () => {
                     const response = await cohere.generate({
-                      model: 'command',
-                      prompt: n,
-                      max_tokens: 300,
-                      temperature: 0.9,
-                      k: 0,
-                      stop_sequences: [],
-                      return_likelihoods: 'NONE'
+                        model: 'command',
+                        prompt: prompt,
+                        max_tokens: 300,
+                        temperature: 0.9,
+                        k: 0,
+                        stop_sequences: [],
+                        return_likelihoods: 'NONE'
                     });
-                    var generated_answer = response.body.generations[0].text
-                    // answer_matrix.answer = generated_answer;
-                    //console.log(answer_matrix.answer)
+                    var generated_answer = response.body.generations[0].text   //response.body.generations[0].text
+
+                    console.log(generated_answer)
+
                     answer_matrix.push(generated_answer)
 
                     generated_info[name] = {
@@ -95,36 +92,102 @@ app.post("/data", (req, res) => {
                     }
 
                     var generation = JSON.stringify(generated_info);
-                    fs.writeFileSync('generated_data.json', generation)
+                    fs.writeFileSync('generated_data.json', generation);
 
                 })();
-            })
 
-            fs.readFile("generated_data.json", "utf8", (err, jsonString) => {
-                if (err){
-                    console.log("File read failed:", err);
-                    return;
-                }
-        
-                try{
-                    const data = JSON.parse(jsonString);
-                    console.log(data[name]);
-        
-        
-                }catch(err){
-                    console.log(err)
-                }
-        
             })
+        })
 
-        }
-        catch(err){
-            console.log(err)
-        }
-    })
+        
+            
+
+    }catch(err){
+        console.log(err)
+    }
 
 
 })
+
+
+// app.post("/data", (req, res) => {
+
+//     fs.readFile("data.json", "utf8", (err, jsonString) => {
+//         if (err){
+//             console.log("File read failed:", err);
+//             return;
+//         }
+
+//         var name = req.body.name
+
+//         try{
+
+//             const data = JSON.parse(jsonString);
+//             // var name = req.body.name
+//             var website = Object.values(data[req.body.name])[1]
+
+//             var prompts = [
+//                 "Write " + name + "\'s date of birth and death.",
+//                 "Write a list of " + name + "\'s most famous works. Format it as a list.",
+//                 "Write a small summary of " + name + "\'s musical style.",
+//                 "Make a list of" + name + "' biggest contributions to music. Format it as a list."
+//             ]
+
+//             // var answer_matrix = {};
+//             var answer_matrix = [];
+
+//             prompts.forEach(n => {
+                
+//                 (async () => {
+//                     const response = await cohere.generate({
+//                       model: 'command',
+//                       prompt: n,
+//                       max_tokens: 300,
+//                       temperature: 0.9,
+//                       k: 0,
+//                       stop_sequences: [],
+//                       return_likelihoods: 'NONE'
+//                     });
+//                     var generated_answer = response.body.generations[0].text
+//                     // answer_matrix.answer = generated_answer;
+//                     //console.log(answer_matrix.answer)
+//                     answer_matrix.push(generated_answer)
+
+//                     generated_info[name] = {
+//                         "data": answer_matrix
+//                     }
+
+//                     var generation = JSON.stringify(generated_info);
+//                     fs.writeFileSync('generated_data.json', generation);
+
+//                 })();
+//             })
+
+//             // fs.readFile("generated_data.json", "utf8", (err, jsonString) => {
+//             //     if (err){
+//             //         console.log("File read failed:", err);
+//             //         return;
+//             //     }
+        
+//             //     try{
+//             //         const data = JSON.parse(jsonString);
+//             //         console.log(data[name]);
+        
+        
+//             //     }catch(err){
+//             //         console.log(err)
+//             //     }
+        
+//             // })
+
+//         }
+//         catch(err){
+//             console.log(err)
+//         }
+//     })
+
+
+// })
 
 
 app.listen(PORT, () => console.log(`server running on PORT ${PORT}`))

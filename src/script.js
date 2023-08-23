@@ -34,7 +34,7 @@ const retrieveInfo = (name) => {
         body: JSON.stringify(data)
     })
 
-    fetch('http://localhost:3000/retrieve')
-        .then(response => response.json())
-        .then(data => console.log(data))
+    // fetch('http://localhost:3000/retrieve')
+    //     .then(response => response.json())
+    //     .then(data => console.log(data))
 }
