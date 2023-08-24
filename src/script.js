@@ -79,10 +79,6 @@ const generateQuestion = (id) => {
 const useGeneratedQuestion = (id, question) => {
     document.getElementById('question-' + id).value = question;
     processQuestion('question-' + id);
-
-    // document.getElementById('generation-' + id).removeEventListener('click', () => {
-    //     useGeneratedQuestion(num_id, question)
-    // })
 }
 
 
@@ -169,3 +165,9 @@ const presentAnswer = (answer, id) => {
     })
 }
 
+
+document.getElementById('details-btn').addEventListener('click', function() {
+    alert(
+        "Welcome to AI Chat! \n Here are a few things to note: \n 1. This app is using API from Cohere. Since the free version is used, this app is able to make up to 5 API calls per minute. If more requests are made, the app crashes. Therefore, please be patient and do not make way too many requests. \n 2. API requests are made to generate the answer to the user's question, and to generate question prompts. \n 3. If the app crashes, the user will be redirect to another page which will notify them of what happened. \n Thank you! 😊"
+    )
+})
