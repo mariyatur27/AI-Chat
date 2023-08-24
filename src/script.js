@@ -135,6 +135,3 @@ const presentAnswer = (answer, id) => {
         }
     })
 }
-
-
-// NEXT Step: Create a button to generate a random prompt

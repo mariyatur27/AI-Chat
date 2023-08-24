@@ -1,23 +1,14 @@
 const PORT = 3000;
 const express = require('express')
 const cors = require('cors')
-const path = require('path')
-const axios = require('axios')
-const cheerio = require('cheerio')
 const app = express()
 const cohere = require('cohere-ai');
 app.use(cors())
 app.use('/static', express.static('src')); 
-const fs = require('fs');
 app.use(express.json());
 
-var data = fs.readFileSync('data.json');
-var composers = JSON.parse(data);
-
-var generated_data = fs.readFileSync('generated_data.json');
-var generated_info = JSON.parse(generated_data)
-
-cohere.init('cV7F8e195ZOqebLM1PiTDiOvUxKyoJtsrCzhbC1e');
+require('dotenv').config();
+cohere.init(process.env.API_KEY);
 
 app.get('/', (req, res) => {
     res.sendFile('index.html', {root: __dirname});
