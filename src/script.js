@@ -1,3 +1,8 @@
+/**
+ * Issues:
+ * - Generated questions should not be clicked after the question is answered
+ */
+
 
 document.getElementById('name-input').addEventListener('keydown', function(e) {
     if (e.keyCode === 13 || e.key === 'Enter'){
@@ -7,7 +12,7 @@ document.getElementById('name-input').addEventListener('keydown', function(e) {
         document.getElementById('initial-message').classList.remove('typed')
 
         let message = document.createElement('h3'); message.innerHTML = "What's up " + name + "! Ask me anything..."; message.classList.add('typed')
-        document.getElementById('main-section').appendChild(message);
+        document.getElementById('main-section').appendChild(message); message.id='message-0';
 
         let textarea = document.createElement('textarea'); textarea.classList.add('text-field'); textarea.id = 'question-0';
         textarea.setAttribute('rows', 1); textarea.setAttribute('cols', 50); textarea.setAttribute('placeholder', "When you are done typing, click enter... ")
@@ -45,11 +50,24 @@ const generateQuestion = (id) => {
             return response.json();
         })
         .then(question => {
-            document.getElementById(id).innerHTML = "Try asking: " + question
-            var num_id = Number(id[id.length - 1])
-            document.getElementById(id).addEventListener('click', () => {
+
+            if (question == '0'){
+                console.log('crash')
+                displayWarningMessage();
+            }else{
+                document.getElementById(id).innerHTML = "Try asking: " + question
+                var num_id = Number(id[id.length - 1])
+
+                // Rendering the generated question so that it's functional
+                document.getElementById(id).addEventListener('click', () => {
+                if (num_id == 0){
+                    document.getElementById('message-0').classList.remove('typed')
+                }
+
                 useGeneratedQuestion(num_id, question)
             })
+            }
+
         })
         .catch(error => {
             console.error('Fetch error:', error);
@@ -61,10 +79,15 @@ const generateQuestion = (id) => {
 const useGeneratedQuestion = (id, question) => {
     document.getElementById('question-' + id).value = question;
     processQuestion('question-' + id);
+
+    // document.getElementById('generation-' + id).removeEventListener('click', () => {
+    //     useGeneratedQuestion(num_id, question)
+    // })
 }
 
 
 const processQuestion = (id) => {
+
     var question = document.getElementById(id).value;
 
     //Disable the textarea
@@ -89,9 +112,13 @@ const processQuestion = (id) => {
             return response.json();
         })
         .then(data => {
-            console.log(data)
-            var new_id = Number(id[id.length - 1]) + 1
-            presentAnswer(data, new_id)
+            if (data == "0"){
+                console.log("The site has crashed")
+                displayWarningMessage();
+            }else{
+                var new_id = Number(id[id.length - 1]) + 1
+                presentAnswer(data, new_id)
+            }
         })
         .catch(error => {
             console.error('Fetch error:', error);
@@ -100,6 +127,10 @@ const processQuestion = (id) => {
 
 }
 
+const displayWarningMessage = () => {
+    location.reload();
+    window.location.assign('http://localhost:3000/warning')
+}
 
 const presentAnswer = (answer, id) => {
     let answer_text = document.createElement('h3'); answer_text.innerHTML = answer; 
@@ -135,3 +166,4 @@ const presentAnswer = (answer, id) => {
         }
     })
 }
+

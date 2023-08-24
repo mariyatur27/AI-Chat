@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chat</title>
+    <link href="static/styles.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <section id="warning-message">
+        <div class="text-area">
+            <h3>Oooops! AI Chat has crashed... ⚠️</h3>
+            <p>Sometimes this happends when too many requests are made in a short amount of time. This program uses the free version of Cohere, meaning a only up to 5 API requests can be sent in 1 minute. Given that API requests are made to generate questions and to answer questions inputed by the user, this number can be quickly surpassed. Therefore, please allow the program some time before typing something new or using a generated question. Please go back and reload the page.</p>
+            <button id="restart-btn-2">Go Back</button>
+        </div>
+    </section>
+    
+
+    <script src="static/warning.js"></script>
+</body>
+</html>

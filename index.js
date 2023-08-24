@@ -14,6 +14,10 @@ app.get('/', (req, res) => {
     res.sendFile('index.html', {root: __dirname});
 })
 
+app.get('/warning', (req, res) => {
+    res.sendFile('crash.html', {root: __dirname});
+})
+
 
 app.post('/data', (req, res) => {
     try {
@@ -31,9 +35,14 @@ app.post('/data', (req, res) => {
               return_likelihoods: 'NONE'
             });
 
-            const answer = response.body.generations[0].text
+            try{
+                const answer = response.body.generations[0].text
             
-            res.json(answer)
+                res.json(answer)
+            }catch(err){
+                console.log(err)
+                res.json("0")
+            }
             
 
           })();
@@ -59,9 +68,14 @@ app.post('/generate', (req, res) => {
               return_likelihoods: 'NONE'
             });
 
-            const question = response.body.generations[0].text
+            try {
+                const question = response.body.generations[0].text
             
-            res.json(question)
+                res.json(question)
+            }catch(err){
+                console.log(err)
+                res.json("0")
+            }
             
 
           })();

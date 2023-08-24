@@ -32,6 +32,11 @@ body{
 button#restart-btn {
     width: 10%;
     font-family: 'Source Code Pro', monospace;
+    cursor: pointer;
+}
+#restart-btn-2{
+    font-family: 'Source Code Pro', monospace;
+    cursor: pointer;
 }
 .typed {
     width: fit-content;
@@ -53,3 +58,19 @@ button#restart-btn {
       border-color: transparent
     }
   }
+
+  section#warning-message {
+    position: fixed;
+    top: 18%;
+    width: 60%;
+    left: 16%;
+    right: 16%;
+    background: #000000;
+    color: white;
+    padding: 4%;
+    border-radius: 17px;
+}
+
+.hide {
+    display: none;
+}
