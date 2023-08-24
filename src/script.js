@@ -1,6 +1,6 @@
 /**
  * Issues:
- * - Generated questions should not be clicked after the question is answered
+ * - Rerun 'start script' when the user returns from the warning page
  */
 
 
@@ -133,6 +133,8 @@ const displayWarningMessage = () => {
 }
 
 const presentAnswer = (answer, id) => {
+    document.getElementById('generation-' + (id-1)).style.display = 'none';
+
     let answer_text = document.createElement('h3'); answer_text.innerHTML = answer; 
     document.getElementById('main-section').appendChild(answer_text);
 
