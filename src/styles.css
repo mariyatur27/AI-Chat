@@ -12,10 +12,44 @@ body{
     width: fit-content;
     padding: 10%;
   }
-  
+.container h3{
+    font-weight: 100;
+}
+.container h5 {
+    text-decoration: underline;
+    font-style: italic;
+    background: #e3f7e3;
+    width: fit-content;
+    cursor: pointer;
+}
 .text-field{
     width: 800px;
     height: 57px;
     font-size: x-large;
     padding: 3%;
+    border-radius: 17px
 }
+button#restart-btn {
+    width: 10%;
+    font-family: 'Source Code Pro', monospace;
+}
+.typed {
+    width: fit-content;
+    font-weight: 100;
+    animation: typing 2s steps(22), blink .5s step-end infinite alternate;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid;
+  }
+  
+  @keyframes typing {
+    from {
+      width: 0
+    }
+  }
+      
+  @keyframes blink {
+    50% {
+      border-color: transparent
+    }
+  }

@@ -52,5 +52,34 @@ app.post('/data', (req, res) => {
     }
 })
 
+app.post('/generate', (req, res) => {
+    try{
+
+        const prompt = req.body.prompt;
+
+        (async () => {
+            const response = await cohere.generate({
+              model: 'command',
+              prompt: prompt,
+              max_tokens: 300,
+              temperature: 0.9,
+              k: 0,
+              stop_sequences: [],
+              return_likelihoods: 'NONE'
+            });
+
+            const question = response.body.generations[0].text
+            
+            res.json(question)
+            
+
+          })();
+        
+
+    }catch(err){
+        console.log(err)
+    }
+})
+
 
 app.listen(PORT, () => console.log(`server running on PORT ${PORT}`))
