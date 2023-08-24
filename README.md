@@ -1,4 +1,4 @@
-# News-Funnel
+# AI-Chat
 
 <h2>AI Chat Application</h2>
 <p>The AI Chat Application is a web-based tool that utilizes advanced natural language processing and machine learning techniques to provide interactive and dynamic conversations with an AI-powered virtual assistant. This application enables users to ask questions, seek information, and engage in discussions with an AI model, generating responses that emulate human-like communication.</p>
